@@ -13,7 +13,7 @@ public class Client{
         SessionFactory sessionFactory = new Configuration()
                 .configure() // configures settings from hibernate.cfg.xml
                 .buildSessionFactory();
-		// create a couple of events...
+		// create a couple of articles...
 		Session session = sessionFactory.openSession();
 		session.beginTransaction();
 		session.save( new Article( "Our very first article!", new Date() ) );
@@ -22,7 +22,7 @@ public class Client{
 		session.getTransaction().commit();
 		session.close();
 
-		// now lets pull events from the database and list them
+		// now lets pull articles from the database and list them
 		session = sessionFactory.openSession();
         session.beginTransaction();
         List result = session.createQuery( "from Article" ).list();
