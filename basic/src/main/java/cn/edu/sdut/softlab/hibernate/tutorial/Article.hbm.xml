@@ -2,11 +2,11 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
                                    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping package="cn.edu.sdut.softlab.hibernate.tutorial">
- <class name="Article" table="articles">
-  <id column="id" name="id">
-   <generator class="sequence"/>
-  </id>
-  <property column="time_created"  name="date" type="timestamp"/>
-  <property name="title"/>
- </class>
+    <class name="Article" table="articles">
+        <id column="id" name="id">
+            <generator class="sequence"/>
+        </id>
+        <property column="time_created"  name="date" type="timestamp"/>
+        <property name="title"/>
+    </class>
 </hibernate-mapping>

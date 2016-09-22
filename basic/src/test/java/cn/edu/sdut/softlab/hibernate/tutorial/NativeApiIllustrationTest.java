@@ -21,10 +21,8 @@
  * 51 Franklin Street, Fifth Floor
  * Boston, MA  02110-1301  USA
  */
-package cn.edu.sdut.softlab.hibernate.tutorial;
 
-import java.util.Date;
-import java.util.List;
+package cn.edu.sdut.softlab.hibernate.tutorial;
 
 import junit.framework.TestCase;
 
@@ -32,46 +30,53 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Illustrates use of Hibernate native APIs.
  *
  * @author Steve Ebersole
  */
 public class NativeApiIllustrationTest extends TestCase {
-	private SessionFactory sessionFactory;
 
-	@Override
-	protected void setUp() throws Exception {
-		// A SessionFactory is set up once for an application
-        sessionFactory = new Configuration()
-                .configure() // configures settings from hibernate.cfg.xml
-                .buildSessionFactory();
-	}
+  private SessionFactory sessionFactory;
 
-	@Override
-	protected void tearDown() throws Exception {
-		if ( sessionFactory != null ) {
-			sessionFactory.close();
-		}
-	}
+  @Override
+  protected void setUp() throws Exception {
+    // A SessionFactory is set up once for an application
+    sessionFactory = new Configuration()
+            .configure() // configures settings from hibernate.cfg.xml
+            .buildSessionFactory();
+  }
 
-	public void testBasicUsage() {
-		// create a couple of Articles...
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		session.save( new Article( "Our very first Article!", new Date() ) );
-		session.save( new Article( "A follow up Article", new Date() ) );
-		session.getTransaction().commit();
-		session.close();
+  @Override
+  protected void tearDown() throws Exception {
+    if (sessionFactory != null) {
+      sessionFactory.close();
+    }
+  }
 
-		// now lets pull Articles from the database and list them
-		session = sessionFactory.openSession();
-        session.beginTransaction();
-        List result = session.createQuery( "from Article" ).list();
-		for ( Article article : (List<Article>) result ) {
-			System.out.println(article );
-		}
-        session.getTransaction().commit();
-        session.close();
-	}
+  /**
+   * test basic usage.
+   */
+  public void testBasicUsage() {
+    // create a couple of Articles...
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    session.save(new Article("Our very first Article!", new Date()));
+    session.save(new Article("A follow up Article", new Date()));
+    session.getTransaction().commit();
+    session.close();
+
+    // now lets pull Articles from the database and list them
+    session = sessionFactory.openSession();
+    session.beginTransaction();
+    List result = session.createQuery("from Article").list();
+    for (Article article : (List<Article>) result) {
+      System.out.println(article);
+    }
+    session.getTransaction().commit();
+    session.close();
+  }
 }

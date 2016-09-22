@@ -3,48 +3,48 @@ package cn.edu.sdut.softlab.hibernate.tutorial;
 import java.util.Date;
 
 public class Article {
-	private Long id;
 
-	private String title;
-	private Date date;
+  private Long id;
 
-	public Article() {
-		//@TODO this form used by Hibernate ?
-	}
+  private String title;
+  private Date date;
 
-	public Article(String title,  Date date) {
-		this.title = title;
-		this.date = date;
-	}
+  public Article() {
+    //@TODO this form used by Hibernate ?
+  }
 
-	public Long getId() {
-		return id;
-	}
+  public Article(String title, Date date) {
+    this.title = title;
+    this.date = date;
+  }
 
-	private void setId(Long id) {
-		this.id = id;
-	}
+  public Long getId() {
+    return id;
+  }
 
-	public Date getDate() {
-		return date;
-	}
+  private void setId(Long id) {
+    this.id = id;
+  }
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+  public Date getDate() {
+    return date;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  public void setDate(Date date) {
+    this.date = date;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  public String getTitle() {
+    return title;
+  }
 
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", date=" + date + "]";
-	}
-	
-	
+  public void setTitle(String title) {
+    this.title = title;
+  }
+
+  @Override
+  public String toString() {
+    return "Article [id=" + id + ", title=" + title + ", date=" + date + "]";
+  }
+
 }
